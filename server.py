@@ -14,7 +14,6 @@ class ChatServer:
         self.create_listening_server()
     #listen for incoming connection
     def create_listening_server(self):
-    
         self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM) #create a socket using TCP port and ipv4
         local_ip = '127.0.0.1'
         local_port = 10319
@@ -45,7 +44,7 @@ class ChatServer:
         while True:
             client = so, (ip, port) = self.server_socket.accept()
             self.add_to_clients_list(client)
-            print('Connected to ', ip, ':', str(port))
+            print('Connected to ', ip, ':', str(port),'--', str(so))
             t = threading.Thread(target=self.receive_messages, args=(so,))
             t.start()
     #add a new client 
